@@ -19,10 +19,10 @@
 <?= form_open("articles/create") ?>
 
 <label for="title">Title</label>
-<input type="text" id="title" name="title">
+<input type="text" id="title" name="title" value="<?= old("title") ?>">
 
 <label for="content">Content</label>
-<textarea id="content" name="content"></textarea>
+<textarea id="content" name="content"><?= old("content") ?></textarea>
 
 <button>Save</button>
 
