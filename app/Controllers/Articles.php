@@ -42,7 +42,8 @@ class Articles extends BaseController
 
         if ($id === false) {
 
-            dd($model->errors());
+            return redirect()->back()
+                ->with("errors", $model->errors());
         }
 
         dd($id);
