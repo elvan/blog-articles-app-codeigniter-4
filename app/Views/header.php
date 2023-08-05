@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title><?= $title ?></title>
 </head>
 
 <body>
