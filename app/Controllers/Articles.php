@@ -71,7 +71,17 @@ class Articles extends BaseController
     {
         $model = new ArticleModel;
 
-        if ($model->update($id, $this->request->getPost())) {
+        $article = $model->find($id);
+
+        $article->fill($this->request->getPost());
+
+        if (!$article->hasChanged()) {
+
+            return redirect()->back()
+                ->with("message", "Nothing to update.");
+        }
+
+        if ($model->save($article)) {
 
             return redirect()->to("articles/$id")
                 ->with("message", "Article updated.");
