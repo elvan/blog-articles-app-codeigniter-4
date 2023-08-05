@@ -92,21 +92,23 @@ class Articles extends BaseController
             ->withInput();
     }
 
-    public function delete($id)
+    public function confirmDelete($id)
     {
         $article = $this->getArticleOr404($id);
-
-        if ($this->request->is("delete")) {
-
-            $this->model->delete($id);
-
-            return redirect()->to("articles")
-                ->with("message", "Article deleted.");
-        }
 
         return view("Articles/delete", [
             "article" => $article
         ]);
+    }
+
+    public function delete($id)
+    {
+        $this->getArticleOr404($id);
+
+        $this->model->delete($id);
+
+        return redirect()->to("articles")
+            ->with("message", "Article deleted.");
     }
 
     private function getArticleOr404($id): Article
