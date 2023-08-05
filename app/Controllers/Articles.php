@@ -17,4 +17,9 @@ class Articles extends BaseController
             "articles" => $data
         ]);
     }
+
+    public function show($id)
+    {
+        dd($id);
+    }
 }
