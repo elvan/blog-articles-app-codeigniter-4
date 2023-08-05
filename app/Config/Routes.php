@@ -19,7 +19,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-// $routes->setAutoRoute(false);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -32,7 +32,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get("articles", "Articles::index");
 $routes->get("articles/(:num)", "Articles::show/$1");
-$routes->get("articles/new", "Articles::new");
+$routes->get("articles/new", "Articles::new", ["as" => "new_article"]);
 $routes->post("articles/create", "Articles::create");
 $routes->get("articles/edit/(:num)", "Articles::edit/$1");
 $routes->post("articles/update/(:num)", "Articles::update/$1");
