@@ -36,8 +36,7 @@ $routes->get("articles/new", "Articles::new");
 $routes->post("articles/create", "Articles::create");
 $routes->get("articles/edit/(:num)", "Articles::edit/$1");
 $routes->post("articles/update/(:num)", "Articles::update/$1");
-$routes->get("articles/delete/(:num)", "Articles::delete/$1");
-$routes->post("articles/delete/(:num)", "Articles::delete/$1");
+$routes->match(["get", "post"], "articles/delete/(:num)", "Articles::delete/$1");
 
 /*
  * --------------------------------------------------------------------
