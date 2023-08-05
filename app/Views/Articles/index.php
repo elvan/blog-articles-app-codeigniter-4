@@ -1,7 +1,9 @@
-<?= $this->include("header") ?>
+<?= $this->extend("layouts/default") ?>
+
+<?= $this->section("title") ?>Articles<?= $this->endSection() ?>
+
+<?= $this->section("content") ?>
 
 <h1>Articles</h1>
 
-</body>
-
-</html>
+<?= $this->endSection() ?>

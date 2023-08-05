@@ -8,6 +8,6 @@ class Articles extends BaseController
 {
     public function index()
     {
-        return view("Articles/index", ["title" => "Articles"]);
+        return view("Articles/index");
     }
 }
