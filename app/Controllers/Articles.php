@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Entities\Article;
 use App\Models\ArticleModel;
 
 class Articles extends BaseController
@@ -32,10 +33,7 @@ class Articles extends BaseController
     public function new()
     {
         return view("Articles/new", [
-            "article" => [
-                "title" => "",
-                "content" => ""
-            ]
+            "article" => new Article
         ]);
     }
 
