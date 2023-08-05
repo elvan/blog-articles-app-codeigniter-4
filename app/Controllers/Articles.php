@@ -20,6 +20,12 @@ class Articles extends BaseController
 
     public function show($id)
     {
-        dd($id);
+        $model = new ArticleModel;
+
+        $article = $model->find($id);
+
+        return view("Articles/show", [
+            "article" => $article
+        ]);
     }
 }
