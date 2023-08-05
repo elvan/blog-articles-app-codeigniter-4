@@ -3,15 +3,15 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ArticleModel;
 
 class Articles extends BaseController
 {
     public function index()
     {
-        $data = [
-            ["title" => "One", "content" => "The first"],
-            ["title" => "Two", "content" => "Some content"]
-        ];
+        $model = new ArticleModel;
+
+        $data = $model->findAll();
 
         return view("Articles/index", [
             "articles" => $data
