@@ -10,6 +10,8 @@
 
 <?= form_open("articles/delete/" . $article->id) ?>
 
+<input type="hidden" name="_method" value="delete">
+
 <button>Yes</button>
 
 </form>

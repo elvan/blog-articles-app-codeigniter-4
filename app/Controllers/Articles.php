@@ -94,7 +94,7 @@ class Articles extends BaseController
     {
         $article = $this->getArticleOr404($id);
 
-        if ($this->request->is("post")) {
+        if ($this->request->is("delete")) {
 
             $this->model->delete($id);
 
