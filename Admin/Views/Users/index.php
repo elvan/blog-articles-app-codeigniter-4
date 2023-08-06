@@ -17,7 +17,7 @@
     <tbody>
         <?php foreach ($users as $user) : ?>
             <tr>
-                <td><?= esc($user->email) ?></td>
+                <td><a href="<?= url_to("\Admin\Controllers\Users::show", $user->id) ?>"><?= esc($user->email) ?></a></td>
                 <td><?= esc($user->first_name) ?></td>
                 <td><?= $user->active ?></td>
             </tr>

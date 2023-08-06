@@ -14,7 +14,7 @@
     <dd><?= esc($user->first_name) ?></dd>
 
     <dt>Created</dt>
-    <dd><?= $user->created_at ?></dd>
+    <dd><?= $user->created_at->humanize() ?></dd>
 </dl>
 
 <?= $this->endSection() ?>
