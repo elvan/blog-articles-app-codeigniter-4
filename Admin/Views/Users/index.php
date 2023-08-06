@@ -12,6 +12,7 @@
             <th>email</th>
             <th>First Name</th>
             <th>Active</th>
+            <th>Banned</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,7 @@
                 <td><a href="<?= url_to("\Admin\Controllers\Users::show", $user->id) ?>"><?= esc($user->email) ?></a></td>
                 <td><?= esc($user->first_name) ?></td>
                 <td><?= yesno($user->active) ?></td>
+                <td><?= yesno($user->isBanned()) ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

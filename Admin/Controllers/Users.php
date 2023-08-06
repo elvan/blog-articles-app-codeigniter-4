@@ -37,6 +37,22 @@ class Users extends BaseController
         ]);
     }
 
+    public function toggleBan($id)
+    {
+        $user = $this->getUserOr404($id);
+
+        if ($user->isBanned()) {
+
+            $user->unBan();
+        } else {
+
+            $user->ban();
+        }
+
+        return redirect()->back()
+            ->with("message", "User saved.");
+    }
+
     private function getUserOr404($id): User
     {
         $user = $this->model->find($id);
