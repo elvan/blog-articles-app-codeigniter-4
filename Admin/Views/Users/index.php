@@ -19,7 +19,7 @@
             <tr>
                 <td><a href="<?= url_to("\Admin\Controllers\Users::show", $user->id) ?>"><?= esc($user->email) ?></a></td>
                 <td><?= esc($user->first_name) ?></td>
-                <td><?= $user->active ?></td>
+                <td><?= yesno($user->active) ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
