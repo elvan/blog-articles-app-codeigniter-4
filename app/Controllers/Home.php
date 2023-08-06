@@ -8,6 +8,12 @@ class Home extends BaseController
 {
     public function index()
     {
+        if (session("magicLogin")) {
+
+            return redirect()->to("set-password")
+                ->with("message", "Please update your password");
+        }
+
         return view("Home/index");
     }
 
