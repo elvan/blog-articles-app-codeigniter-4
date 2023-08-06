@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\UserModel;
 
 class Password extends BaseController
 {
@@ -30,6 +31,15 @@ class Password extends BaseController
                 ->with("errors", $this->validator->getErrors());
         }
 
-        echo "Valid";
+        $user = auth()->user();
+
+        $user->password = $this->request->getPost("password");
+
+        $model = new UserModel;
+
+        $model->save($user);
+
+        return redirect()->to("/")
+            ->with("message", "Password changed successfully");
     }
 }
