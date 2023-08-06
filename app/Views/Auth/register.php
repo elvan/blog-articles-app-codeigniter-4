@@ -35,6 +35,10 @@ use CodeIgniter\Shield\Config\Auth;
             <form action="<?= url_to('register') ?>" method="post">
                 <?= csrf_field() ?>
 
+                <div class="mb-2">
+                    <input type="text" class="form-control" name="first_name" placeholder="First Name" value="<?= old("first_name") ?>" required>
+                </div>
+
                 <!-- Email -->
                 <div class="mb-2">
                     <input type="email" class="form-control" name="email" inputmode="email" autocomplete="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>" required />
