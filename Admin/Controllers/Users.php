@@ -16,10 +16,11 @@ class Users extends BaseController
 
     public function index()
     {
-        $users = $this->model->findAll();
+        $users = $this->model->paginate(3);
 
         return view("Admin\Views\Users\index", [
-            "users" => $users
+            "users" => $users,
+            "pager" => $this->model->pager
         ]);
     }
 }
