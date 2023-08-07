@@ -13,7 +13,18 @@
 </label>
 
 <label>
-    <input type="checkbox" name="groups[]" value="admin" <?= $user->inGroup("admin") ? "checked" : "" ?>> admin
+
+    <?php if ($user->id === auth()->user()->id) : ?>
+
+        <input type="checkbox" checked disabled> admin
+        <input type="hidden" name="groups[]" value="admin">
+
+    <?php else : ?>
+
+        <input type="checkbox" name="groups[]" value="admin" <?= $user->inGroup("admin") ? "checked" : "" ?>> admin
+
+    <?php endif; ?>
+
 </label>
 
 <button>Save</button>
