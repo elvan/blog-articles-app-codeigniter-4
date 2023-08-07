@@ -7,6 +7,7 @@ use App\Entities\Article;
 use App\Models\ArticleModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use RuntimeException;
+use finfo;
 
 class Image extends BaseController
 {
@@ -73,6 +74,26 @@ class Image extends BaseController
 
         return redirect()->to("articles/$id")
             ->with("message", "Image uploaded.");
+    }
+
+    public function get($id)
+    {
+        $article = $this->getArticleOr404($id);
+
+        if ($article->image) {
+
+            $path = WRITEPATH . "uploads/article_images/" . $article->image;
+
+            $finfo = new finfo(FILEINFO_MIME);
+
+            $type = $finfo->file($path);
+
+            header("Content-Type: $type");
+            header("Content-Length: " . filesize($path));
+
+            readfile($path);
+            exit;
+        }
     }
 
     private function getArticleOr404($id): Article
