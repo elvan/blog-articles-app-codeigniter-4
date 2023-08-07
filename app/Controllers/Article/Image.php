@@ -56,6 +56,10 @@ class Image extends BaseController
             return redirect()->back()
                 ->with("errors", ["Invalid file format"]);
         }
+
+        $path = $file->store("article_images");
+
+        dd($path);
     }
 
     private function getArticleOr404($id): Article
