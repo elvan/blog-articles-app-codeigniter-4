@@ -36,6 +36,12 @@ class Articles extends BaseController
 
     public function new()
     {
+        if (!auth()->loggedIn()) {
+
+            return redirect()->to("login")
+                ->with("message", "Please login first");
+        }
+
         return view("Articles/new", [
             "article" => new Article
         ]);
@@ -103,7 +109,7 @@ class Articles extends BaseController
 
     public function delete($id)
     {
-        $this->getArticleOr404($id);
+        $article = $this->getArticleOr404($id);
 
         $this->model->delete($id);
 
