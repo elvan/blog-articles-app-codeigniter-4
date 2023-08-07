@@ -10,7 +10,7 @@
 
 <?php if (
   $article->isOwner() ||
-  auth()->user()->hasPermission("articles.edit")
+  auth()->user()->can("articles.edit")
 ) : ?>
 
   <a href="<?= url_to("Articles::edit", $article->id) ?>">Edit</a>
@@ -19,7 +19,7 @@
 
 <?php if (
   $article->isOwner() ||
-  auth()->user()->hasPermission("articles.delete")
+  auth()->user()->can("articles.delete")
 ) : ?>
 
   <a href="<?= url_to("Articles::confirmDelete", $article->id) ?>">Delete</a>
