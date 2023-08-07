@@ -59,6 +59,13 @@ class Image extends BaseController
 
         $path = $file->store("article_images");
 
+        $path = WRITEPATH . "uploads/" . $path;
+
+        service("image")
+            ->withFile($path)
+            ->fit(200, 200, "center")
+            ->save($path);
+
         dd($path);
     }
 
