@@ -66,7 +66,13 @@ class Image extends BaseController
             ->fit(200, 200, "center")
             ->save($path);
 
-        dd($path);
+        $article->image = $file->getName();
+
+        $this->model->protect(false)
+            ->save($article);
+
+        return redirect()->to("articles/$id")
+            ->with("message", "Image uploaded.");
     }
 
     private function getArticleOr404($id): Article
