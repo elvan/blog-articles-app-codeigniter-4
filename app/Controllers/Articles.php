@@ -20,10 +20,12 @@ class Articles extends BaseController
         $data = $this->model
             ->select("article.*, users.first_name")
             ->join("users", "users.id = article.users_id")
-            ->findAll();
+            ->orderBy("created_at")
+            ->paginate(3);
 
         return view("Articles/index", [
-            "articles" => $data
+            "articles" => $data,
+            "pager" => $this->model->pager
         ]);
     }
 

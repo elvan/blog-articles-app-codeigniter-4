@@ -18,4 +18,6 @@
 
 <?php endforeach; ?>
 
+<?= $pager->simpleLinks() ?>
+
 <?= $this->endSection() ?>

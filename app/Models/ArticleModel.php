@@ -26,6 +26,8 @@ class ArticleModel extends Model
 
     protected $beforeInsert = ["setUsersID"];
 
+    protected $useTimestamps = true;
+
     protected function setUsersID(array $data)
     {
         $data["data"]["users_id"] = auth()->user()->id;
