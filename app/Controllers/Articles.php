@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
 use App\Entities\Article;
 use App\Models\ArticleModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
@@ -18,7 +17,10 @@ class Articles extends BaseController
 
     public function index()
     {
-        $data = $this->model->findAll();
+        $data = $this->model
+            ->select("article.*, users.first_name")
+            ->join("users", "users.id = article.users_id")
+            ->findAll();
 
         return view("Articles/index", [
             "articles" => $data
