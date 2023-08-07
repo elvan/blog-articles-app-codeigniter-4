@@ -16,9 +16,12 @@
 
 <?php endif; ?>
 
-<?= form_open("articles/" . $article->id) ?>
+<?= form_open_multipart("articles/" . $article->id . "/image/create") ?>
 
+<label for="image">Image file</label>
+<input type="file" id="image" name="image">
 
+<button>Upload</button>
 
 </form>
 
