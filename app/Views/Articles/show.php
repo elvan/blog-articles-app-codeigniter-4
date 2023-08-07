@@ -6,6 +6,8 @@
 
 <h1><?= esc($article->title) ?></h1>
 
+<a href="<?= url_to("Article\Image::new", $article->id) ?>">Edit image</a>
+
 <p><?= esc($article->content) ?></p>
 
 <?php if (
