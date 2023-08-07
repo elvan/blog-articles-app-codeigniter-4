@@ -6,7 +6,15 @@
 
 <h1><?= esc($article->title) ?></h1>
 
-<a href="<?= url_to("Article\Image::new", $article->id) ?>">Edit image</a>
+<?php if ($article->image) : ?>
+
+  <img src="<?= url_to("Article\Image::get", $article->id) ?>">
+
+<?php else : ?>
+
+  <a href="<?= url_to("Article\Image::new", $article->id) ?>">Edit image</a>
+
+<?php endif; ?>
 
 <p><?= esc($article->content) ?></p>
 
