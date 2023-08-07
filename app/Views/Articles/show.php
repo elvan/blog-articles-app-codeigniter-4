@@ -10,6 +10,12 @@
 
   <img src="<?= url_to("Article\Image::get", $article->id) ?>">
 
+  <?= form_open("articles/" . $article->id . "/image/delete") ?>
+
+  <button>Delete</button>
+
+  </form>
+
 <?php else : ?>
 
   <a href="<?= url_to("Article\Image::new", $article->id) ?>">Edit image</a>

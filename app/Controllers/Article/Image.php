@@ -96,6 +96,26 @@ class Image extends BaseController
         }
     }
 
+    public function delete($id)
+    {
+        $article = $this->getArticleOr404($id);
+
+        $path = WRITEPATH . "uploads/article_images/" . $article->image;
+
+        if (is_file($path)) {
+
+            unlink($path);
+        }
+
+        $article->image = null;
+
+        $this->model->protect(false)
+            ->save($article);
+
+        return redirect()->to("articles/$id")
+            ->with("message", "Image removed.");
+    }
+
     private function getArticleOr404($id): Article
     {
         $article = $this->model->find($id);
