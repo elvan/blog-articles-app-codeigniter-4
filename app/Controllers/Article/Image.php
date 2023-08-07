@@ -44,6 +44,18 @@ class Image extends BaseController
 
             throw new RuntimeException($file->getErrorString() . " " . $error_code);
         }
+
+        if ($file->getSizeByUnit("mb") > 2) {
+
+            return redirect()->back()
+                ->with("errors", ["File too large"]);
+        }
+
+        if (!in_array($file->getMimeType(), ["image/png", "image/jpeg"])) {
+
+            return redirect()->back()
+                ->with("errors", ["Invalid file format"]);
+        }
     }
 
     private function getArticleOr404($id): Article
