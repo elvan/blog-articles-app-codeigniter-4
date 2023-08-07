@@ -8,9 +8,19 @@
 
 <p><?= esc($article->content) ?></p>
 
-<?php if ($article->isOwner()) : ?>
+<?php if (
+  $article->isOwner() ||
+  auth()->user()->hasPermission("articles.edit")
+) : ?>
 
   <a href="<?= url_to("Articles::edit", $article->id) ?>">Edit</a>
+
+<?php endif; ?>
+
+<?php if (
+  $article->isOwner() ||
+  auth()->user()->hasPermission("articles.delete")
+) : ?>
 
   <a href="<?= url_to("Articles::confirmDelete", $article->id) ?>">Delete</a>
 
