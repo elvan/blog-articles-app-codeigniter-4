@@ -31,6 +31,8 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+$routes->get("setup", "Setup::index");
+
 service('auth')->routes($routes);
 
 $routes->group("", ["filter" => "login"], static function ($routes) {
