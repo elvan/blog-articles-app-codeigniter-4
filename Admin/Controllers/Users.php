@@ -53,6 +53,15 @@ class Users extends BaseController
             ->with("message", "User saved.");
     }
 
+    public function groups($id)
+    {
+        $user = $this->getUserOr404($id);
+
+        return view("Admin\Views\Users\groups", [
+            "user" => $user
+        ]);
+    }
+
     private function getUserOr404($id): User
     {
         $user = $this->model->find($id);
