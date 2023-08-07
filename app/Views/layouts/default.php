@@ -19,7 +19,11 @@
 
             <a href="<?= url_to("articles") ?>">Articles</a>
 
-            <a href="<?= url_to("admin/users") ?>">Users</a>
+            <?php if (auth()->user()->inGroup("admin")) : ?>
+
+                <a href="<?= url_to("admin/users") ?>">Users</a>
+
+            <?php endif; ?>
 
             <a href="<?= url_to("logout") ?>">Log out</a>
 
@@ -34,6 +38,12 @@
     <?php if (session()->has("message")) : ?>
 
         <p><?= session("message") ?></p>
+
+    <?php endif; ?>
+
+    <?php if (session()->has("error")) : ?>
+
+        <p><?= session("error") ?></p>
 
     <?php endif; ?>
 
