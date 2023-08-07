@@ -21,6 +21,12 @@
         <?= implode(", ", $user->getGroups()) ?>
         <a href="<?= url_to("\Admin\Controllers\Users::groups", $user->id) ?>">edit</a>
     </dd>
+
+    <dt>Permissons</dt>
+    <dd>
+        <?= implode(", ", $user->getPermissions()) ?>
+        <a href="<?= url_to("\Admin\Controllers\Users::permissions", $user->id) ?>">edit</a>
+    </dd>
 </dl>
 
 <?= form_open("admin/users/" . $user->id . "/toggle-ban") ?>
